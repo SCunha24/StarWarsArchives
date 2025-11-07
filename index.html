@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Star Wars Archives</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="topnav">
+    <a href="#intro">
+      <div class="brand"> 
+        <p>star wars</p><p>archives</p> 
+      </div>
+    </a>
+
+    <div class="navlinks">
+      <a href="#characters">characters</a>
+      <a href="#planets">planets</a>
+      <a href="#vehicles">vehicles</a>
+      <a href="#starships">starships</a>
+    </div>
+  </nav>
+
+  <header id="hero" class="hero">
+      <section id="intro" class="intro">
+        <div class="title"> 
+          <p>star wars</p><p>archives</p> 
+        </div>
+        <a href="#characters">
+          <div class="Enter">Enter</div>
+        </a>
+      </section>
+  </header>
+
+  <main id="main">
+
+    <div id="detail-panel" class="panel" aria-hidden="true" role="dialog" aria-labelledby="detail-title">
+      <div class="panel-bg" id="panel-bg"></div>
+      <div class="panel-panel">
+        <button id="panel-close" class="panel-close" aria-label="Close">✕</button>
+        <div id="panel-body" class="panel-body"></div>
+      </div>
+    </div>
+
+    <section id="characters" class="section">
+      <div class="section-head">
+        <h2 class="section-title">characters</h2>
+      </div>
+      <div id="characters-grid" class="grid">
+        <div class="placeholder">loading characters…</div>
+      </div>
+    </section>
+
+    <section id="planets" class="section">
+       <div class="section-head">
+        <h2 class="section-title">planets</h2>
+      </div>
+      <div id="characters-grid" class="grid">
+        <div class="placeholder">loading planets</div>
+      </div>
+    </section>
+
+    <section id="vehicles" class="section">
+       <div class="section-head">
+        <h2 class="section-title">vehicles</h2>
+      </div>
+      <div id="characters-grid" class="grid">
+        <div class="placeholder">loading vehicles</div>
+      </div>
+    </section>
+
+    <section id="starships" class="section">
+       <div class="section-head">
+        <h2 class="section-title">starships</h2>
+      </div>
+      <div id="characters-grid" class="grid">
+        <div class="placeholder">loading starships</div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+  </footer>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
