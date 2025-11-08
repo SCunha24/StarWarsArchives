@@ -1,11 +1,12 @@
-document.querySelector('.Enter').addEventListener('click', () => {
+/*document.querySelector('.Enter').addEventListener('click', () => {
     const intro = document.querySelector('.intro')
     intro.classList.add('fade-out')
     setTimeout(() => {
         intro.style.display = 'none'
         window.scrollTo({ top: 0, behavior: 'smooth' })
     }, 800)
-})
+})*/
+const scrollStep = 600
 
 const create = (tag, className) => { 
     const e = document.createElement(tag) 
@@ -136,5 +137,15 @@ document.addEventListener('DOMContentLoaded', () => {
     SetUpPlanets()
     SetUpVehicles()
     SetUpStarships()
+
+    element('#scrollUp').addEventListener('click', () => {
+    window.scrollBy({ top: -scrollStep, behavior: 'smooth' })
+    console.log("cima")
+    })
+
+    element('#scrollDown').addEventListener('click', () => {
+    window.scrollBy({ top: scrollStep, behavior: 'smooth' })
+    console.log("baixo")
+    })
 })
 
