@@ -1,22 +1,23 @@
 :root {
-  --bg: #03040a;
-  --panel: #0b0f14;
-  --white: #e9f0fb;
-  --detail: #ffe81f;
-  --grey: #98a3b3;
-  --glass: rgba(255,255,255,0.03);
-  --card-radius: 12px;
+    --bg: #03040a;
+    --panel: #0b0f14;
+    --white: #e9f0fb;
+    --detail: #ffe81f;
+    --grey: #98a3b3;
+    --glass: rgba(255,255,255,0.03);
+    --card-radius: 12px;
+    --zeropacity: rgba(0, 0, 0, 0);
 }
 
 @font-face {
-  font-family: Font;
-  src: url(data/font.ttf);
+    font-family: Font;
+    src: url(data/font.ttf);
 }
 
 @font-face {
-  font-family: FontOutline;
-  src: url(data/fontOutline.ttf);
-}
+    font-family: FontOutline;
+    src: url(data/fontOutline.ttf);
+    }
 
 * { 
     box-sizing: border-box; 
@@ -144,7 +145,7 @@ html, body {
 .scroll-btn {
     position: fixed;
     right: 0;
-    background: var(--bg);
+    background: var(--zeropacity);
     border: none;
     color: var(--grey); 
     cursor: pointer;
@@ -258,15 +259,15 @@ html, body {
 }
 
 .card {
-  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-  border-radius: var(--card-radius);
-  padding:12px;
-  border:1px solid rgba(255,255,255,0.04);
-  transition: transform .28s cubic-bezier(.2,.9,.3,1), box-shadow .28s;
-  box-shadow: 0 8px 22px rgba(0,0,0,0.5);
-  display: flex; flex-direction:column; align-items:center; text-align:center; cursor:pointer;
-  min-height: 260px;
-  transform-style: preserve-3d;
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border-radius: var(--card-radius);
+    padding:12px;
+    border:1px solid rgba(255,255,255,0.04);
+    transition: transform .28s cubic-bezier(.2,.9,.3,1), box-shadow .28s;
+    box-shadow: 0 8px 22px rgba(0,0,0,0.5);
+    display: flex; flex-direction:column; align-items:center; text-align:center; cursor:pointer;
+    min-height: 260px;
+    transform-style: preserve-3d;
 }
 
 .card:hover { 
@@ -384,3 +385,36 @@ html, body {
     padding: 28px; 
     color: var(--grey); 
 }
+/*
+#warp-lines {
+    position: fixed;
+    top: 0; 
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 999;
+}
+
+.warp-line {
+    position: absolute;
+    width: 1px;
+    height: 100vh;
+    background: linear-gradient(to bottom, white 0%, rgba(255,255,255,0) 100%);
+    border-radius: 2px;
+    opacity: 0.8;
+    animation: warpMove 0.35s linear forwards;
+    filter: drop-shadow(0 0 6px cyan);
+}
+
+@keyframes warpMove {
+    from {
+        transform: translateY(100vh) scaleY(0.2);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-20vh) scaleY(3);
+        opacity: 0;
+    }
+}*/

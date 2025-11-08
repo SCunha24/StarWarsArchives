@@ -24,6 +24,22 @@ const fetchJson = async (url) => {
     return response.json()
 }
 
+async function warpSpeed() {
+    const container = document.getElementById("warp-lines")
+    container.innerHTML = ""
+    const lines = 40 
+
+    for (let i = 0; i < lines; i++) {
+    const line = create("div")
+    line.className = "warp-line"
+    line.style.left = Math.random() * 100 + "vw"
+    line.style.height = 80 + Math.random() * 200 + "px"
+    line.style.animationDelay = Math.random() * 0.1 + "s"
+    container.appendChild(line)
+    }
+    setTimeout(() => container.innerHTML = "", 400)
+}
+
 const MakeCharacter = c => ({
     id: c.id,
     name: c.name,
@@ -65,11 +81,17 @@ const panelContentForCharacter = (c) => {
     left.appendChild(img)
 
     const right = create('div', 'panel-right')
-    const h = create('h2'); h.textContent = c.name; h.id = 'detail-title'
-    const pAff = create('p'); pAff.innerHTML = `<strong>affiliation:</strong> ${c.affiliation || 'unknown'}`
-    const pSpecies = create('p'); pSpecies.innerHTML = `<strong>species:</strong> ${c.species || 'unknown'}`
-    const pHome = create('p'); pHome.innerHTML = `<strong>homeworld:</strong> ${c.homeworld || 'unknown'}`
-    const pWiki = create('p'); pWiki.innerHTML = c.wiki ? `<a href="${c.wiki}" target="_blank" rel="noopener">read more</a>` : ''
+    const h = create('h2') 
+    const pAff = create('p') 
+    const pSpecies = create('p') 
+    const pHome = create('p') 
+    const pWiki = create('p') 
+
+    h.textContent = c.name; h.id = 'detail-title'
+    pAff.innerHTML = `<strong>affiliation:</strong> ${c.affiliation || 'unknown'}`
+    pSpecies.innerHTML = `<strong>species:</strong> ${c.species || 'unknown'}`
+    pHome.innerHTML = `<strong>homeworld:</strong> ${c.homeworld || 'unknown'}`
+    pWiki.innerHTML = c.wiki ? `<a href="${c.wiki}" target="_blank" rel="noopener">read more</a>` : ''
 
     right.appendChild(h)
     right.appendChild(pAff)
@@ -85,17 +107,74 @@ const panelContentForCharacter = (c) => {
 }
 
 const planetInfo = (p) => {
-  const card = create('article', 'card');
-  const imgWrap = create('div', 'img-wrap');
-  const img = create('img'); img.src = `https://placehold.co/600x800/071025/ffe81f?text=${encodeURIComponent(p.name)}`; img.alt = p.name;
-  imgWrap.appendChild(img);
-  card.appendChild(imgWrap);
-  const name = create('h3'); name.textContent = p.name;
-  const meta = create('p'); meta.innerHTML = `Climate: ${p.climate} • Population: ${p.population}`;
-  card.appendChild(name); card.appendChild(meta);
-  card.dataset.json = JSON.stringify(p);
-  return card;
-};
+  const card = create('article', 'card')
+  const imgWrap = create('div', 'img-wrap')
+  const img = create('img')
+  img.src = `https://placehold.co/600x800/071025/ffe81f?text=${encodeURIComponent(p.name)}`; img.alt = p.name
+  imgWrap.appendChild(img)
+  card.appendChild(imgWrap)
+
+  const name = create('h3') 
+  const meta = create('p') 
+  name.textContent = p.name
+  meta.innerHTML = `Climate: ${p.climate} • Population: ${p.population}`
+
+  card.appendChild(name)
+  card.appendChild(meta)
+  card.dataset.json = JSON.stringify(p)
+  return card
+}
+
+let vehicleImages = {}
+
+async function loadVehicleImages() {
+    try {
+        const data = await fetch('./data/vehicles.json')
+        vehicleImages = await data.json()
+    } catch (err) {
+        console.error("Erro a carregar imagens dos veículos:", err)
+    }
+}
+
+const vehicleInfo = (v) => {
+    const card = create('article', 'card')
+    const imgWrap = create('div', 'img-wrap')
+    const img = create('img')
+
+    img.src = vehicleImages[v.name] || `https://placehold.co/600x800/102022/ffe81f?text=${encodeURIComponent(v.name)}`
+    img.alt = v.name
+    img.loading = 'lazy'
+    imgWrap.appendChild(img)
+    card.appendChild(imgWrap)
+
+    const name = create('h3')
+    const meta = create('p')
+    name.textContent = v.name
+    meta.innerHTML = `${v.model || 'Model N/A'} • ${v.manufacturer || ''}`
+    card.appendChild(name)
+    card.appendChild(meta)
+    card.dataset.json = JSON.stringify(v)
+    return card
+}
+
+const starshipInfo = (s) => {
+    const card = create('article', 'card')
+    const imgWrap = create('div', 'img-wrap')
+    const img = create('img')
+    img.src = `https://placehold.co/600x800/0b2030/ffe81f?text=${encodeURIComponent(s.name)}`; img.alt = s.name
+    imgWrap.appendChild(img)
+    card.appendChild(imgWrap)
+
+    const name = create('h3') 
+    const meta = create('p')
+    name.textContent = s.name
+    meta.innerHTML = `${s.starship_class || 'Class N/A'} • ${s.hyperdrive_rating ? 'HD: ' + s.hyperdrive_rating : ''}`
+
+    card.appendChild(name) 
+    card.appendChild(meta)
+    card.dataset.json = JSON.stringify(s)
+    return card
+}
 
 async function SetUpCharacters() {
     const grid = element('#characters-grid')
@@ -107,7 +186,10 @@ async function SetUpCharacters() {
         chars.forEach(c => {
         const card = CharacterCard(c)
         card.addEventListener('click', () => {
-            openPanelWith( panelContentForCharacter(c) )
+            warpSpeed()
+            setTimeout(() => {
+                openPanelWith(panelContentForCharacter(c))
+            }, 100) 
         })
         grid.appendChild(card)
         })
@@ -118,70 +200,44 @@ async function SetUpCharacters() {
 }
 
 async function SetUpPlanets() {
-    const grid = element('#planets-grid');
-    grid.innerHTML = `<div class="placeholder">Loading planets…</div>`;
+    const grid = element('#planets-grid')
+    grid.innerHTML = `<div class="placeholder">Loading planets…</div>`
     try {
-        const data = await fetchJson(SWAPI_BASE + 'planets/');
-        const results = data.results || [];
-        grid.innerHTML = '';
-        results.forEach(p => grid.appendChild(planetInfo(p)));
+        const data = await fetchJson(SWAPI_BASE + 'planets/')
+        const results = data.results || []
+        grid.innerHTML = ''
+        results.forEach(p => grid.appendChild(planetInfo(p)))
     } catch (err) {
-        grid.innerHTML = `<div class="placeholder">Failed to load planets: ${err.message}</div>`;
-        console.error(err);
+        grid.innerHTML = `<div class="placeholder">Failed to load planets: ${err.message}</div>`
+        console.error(err)
     }
 }
 
-const vehicleInfo = (v) => {
-    const card = create('article', 'card');
-    const imgWrap = create('div', 'img-wrap');
-    const img = create('img'); img.src = `https://placehold.co/600x800/102022/ffe81f?text=${encodeURIComponent(v.name)}`; img.alt = v.name;
-    imgWrap.appendChild(img);
-    card.appendChild(imgWrap);
-    const name = create('h3'); name.textContent = v.name;
-    const meta = create('p'); meta.innerHTML = `${v.model || 'Model N/A'} • ${v.manufacturer || ''}`;
-    card.appendChild(name); card.appendChild(meta);
-    card.dataset.json = JSON.stringify(v);
-    return card;
-};
-
-const starshipInfo = (s) => {
-    const card = create('article', 'card');
-    const imgWrap = create('div', 'img-wrap');
-    const img = create('img'); img.src = `https://placehold.co/600x800/0b2030/ffe81f?text=${encodeURIComponent(s.name)}`; img.alt = s.name;
-    imgWrap.appendChild(img);
-    card.appendChild(imgWrap);
-    const name = create('h3'); name.textContent = s.name;
-    const meta = create('p'); meta.innerHTML = `${s.starship_class || 'Class N/A'} • ${s.hyperdrive_rating ? 'HD: ' + s.hyperdrive_rating : ''}`;
-    card.appendChild(name); card.appendChild(meta);
-    card.dataset.json = JSON.stringify(s);
-    return card;
-};
-
 async function SetUpVehicles() {
-    const grid = element('#vehicles-grid');
-    grid.innerHTML = `<div class="placeholder">Loading vehicles…</div>`;
+    const grid = element('#vehicles-grid')
+    grid.innerHTML = `<div class="placeholder">Loading vehicles…</div>`
     try {
-        const data = await fetchJson(SWAPI_BASE + 'vehicles/');
-        const results = data.results || [];
-        grid.innerHTML = '';
-        results.forEach(v => grid.appendChild(vehicleInfo(v)));
+        const data = await fetchJson(SWAPI_BASE + 'vehicles/')
+        const results = data.results || []
+        grid.innerHTML = ''
+        results.forEach(v => grid.appendChild(vehicleInfo(v)))
     } catch (err) {
-        grid.innerHTML = `<div class="placeholder">Failed to load vehicles: ${err.message}</div>`;
-        console.error(err);
+        grid.innerHTML = `<div class="placeholder">Failed to load vehicles: ${err.message}</div>`
+        console.error(err)
     }
 }
 
 async function SetUpStarships() {
-    const grid = element('#starships-grid');
-    grid.innerHTML = `<div class="placeholder">Loading starships…</div>`;
+    const grid = element('#starships-grid')
+    grid.innerHTML = `<div class="placeholder">Loading starships…</div>`
     try {
-        const data = await fetchJson(SWAPI_BASE + 'starships/');
-        const results = data.results || [];
-        grid.innerHTML = '';
-        results.forEach(s => grid.appendChild(starshipInfo(s)));
+        const data = await fetchJson(SWAPI_BASE + 'starships/')
+        const results = data.results || []
+        grid.innerHTML = ''
+        results.forEach(s => grid.appendChild(starshipInfo(s)))
     } catch (err) {
-        grid.innerHTML = `<div class="placeholder">Failed to load starships: ${err.message}</div>`;
-        console.error(err);
+        grid.innerHTML = `<div class="placeholder">Failed to load starships: ${err.message}</div>`
+        console.error(err)
     }
 }
 
@@ -205,6 +261,7 @@ element('#panel-bg').addEventListener('click', closePanel);
 element('#panel-bg')?.addEventListener('click', closePanel);
 
 document.addEventListener('DOMContentLoaded', () => {
+    loadVehicleImages()
     SetUpCharacters()
     SetUpPlanets()
     SetUpVehicles()
