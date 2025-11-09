@@ -385,36 +385,3 @@ html, body {
     padding: 28px; 
     color: var(--grey); 
 }
-/*
-#warp-lines {
-    position: fixed;
-    top: 0; 
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    pointer-events: none;
-    overflow: hidden;
-    z-index: 999;
-}
-
-.warp-line {
-    position: absolute;
-    width: 1px;
-    height: 100vh;
-    background: linear-gradient(to bottom, white 0%, rgba(255,255,255,0) 100%);
-    border-radius: 2px;
-    opacity: 0.8;
-    animation: warpMove 0.35s linear forwards;
-    filter: drop-shadow(0 0 6px cyan);
-}
-
-@keyframes warpMove {
-    from {
-        transform: translateY(100vh) scaleY(0.2);
-        opacity: 1;
-    }
-    to {
-        transform: translateY(-20vh) scaleY(3);
-        opacity: 0;
-    }
-}*/
