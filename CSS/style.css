@@ -9,6 +9,7 @@
     --glass: rgba(255,255,255,0.03);
     --card-radius: 12px;
     --zeropacity: rgba(0, 0, 0, 0);
+    --navBG: rgba(0, 0, 0, 0.667);
 }
 
 @font-face {
@@ -157,7 +158,7 @@ html, body {
 }
 
 .modes {
-    margin: 3vh 1.5vw;
+    margin: 2vh 1.5vw;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -230,6 +231,7 @@ html, body {
 
 .brand { 
     font-family: Font;
+    margin: -2vh 0;
     font-size: 2rem;
     color: var(--bg); 
     text-shadow: -1px -1px 0 var(--detail), 1px -1px 0 var(--detail), 
@@ -251,12 +253,21 @@ html, body {
     color: var(--white); 
     text-shadow: none;
 }
+.navBG{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 15vh;
+    width: 100vw;
+    background-color: var(--navBG);
+    z-index: 10;
+}
 
 .navlinks {
     display: flex;
     justify-content: space-between;
     align-items: center; 
-    margin: 7vh 25vw;
+    margin: 5vh 25vw;
     position: fixed; 
     inset: 0 auto auto 0;
     z-index: 50;
