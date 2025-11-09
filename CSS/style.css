@@ -11,12 +11,12 @@
 
 @font-face {
     font-family: Font;
-    src: url(data/font.ttf);
+    src: url(../data/font.ttf);
 }
 
 @font-face {
     font-family: FontOutline;
-    src: url(data/fontOutline.ttf);
+    src: url(../data/fontOutline.ttf);
     }
 
 * { 
@@ -84,7 +84,7 @@ html, body {
     position: relative;
     left: 0;
     background-color: var(--bg);
-    z-index: 100;
+    z-index: 0;
     height:100vh;
     width: 100vw;
     transform: translateY(0);
@@ -159,7 +159,7 @@ html, body {
 
 .scroll-btn:hover {
     color: var(--detail);
-    transform: translateY(-2px);
+    transform: translateY(-4px) scale(1.1);
 }
 
 .scroll-btn svg {
@@ -168,11 +168,11 @@ html, body {
 }
 
 #scrollUp {
-    bottom: 90px;
+    bottom: 50vh;
 }
 
 #scrollDown {
-    bottom: 20px;
+    bottom: 43vh;
 }
 
 .brand { 
@@ -384,4 +384,8 @@ html, body {
     text-align: center; 
     padding: 28px; 
     color: var(--grey); 
+}
+
+.Testblock{
+    height: 300vh;
 }

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <title>Planets</title>
+    <link rel="stylesheet" href="CSS/style.css">
+    </head>
+    <body>
+        <div class="stars"></div>
+        <div class="stars2"></div>
+        <div class="stars3"></div>
+        
+        <nav class="topnav">
+            <a href="index.html">
+            <div class="brand"> 
+                <p>star wars</p><p>archives</p> 
+            </div>
+            </a>
+
+            <div class="navlinks">
+            <a href="characters.html">characters</a>
+            <a href="planets.html">planets</a>
+            <a href="vehicles.html">vehicles</a>
+            <a href="starships.html">starships</a>
+            </div>
+        </nav>
+
+        <main id="main">
+            <section id="vehicles" class="section">
+                <div class="section-head">
+                    <h2 class="section-title">vehicles</h2>
+                </div>
+                <div id="vehicles-grid" class="grid">
+                    <div class="placeholder">Loading vehicles…</div>
+                </div>
+            </section>
+        </main>
+
+        <button id="scrollUp" class="scroll-btn">
+            <svg width="24" height="40" viewBox="0 0 24 40" xmlns="http://www.w3.org/2000/svg">
+            <line x1="12" y1="38" x2="12" y2="4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            <polyline points="6,10 12,4 18,10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+
+        <button id="scrollDown" class="scroll-btn">
+            <svg width="24" height="40" viewBox="0 0 24 40" xmlns="http://www.w3.org/2000/svg">
+            <line x1="12" y1="2" x2="12" y2="36" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            <polyline points="6,30 12,36 18,30" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+
+        <script type="module" src="JS/vehicles.js"></script>
+    </body>
+</html>

@@ -6,13 +6,9 @@ import { SetUpVehicles } from './vehicles.js'
 import { SetUpStarships } from './starships.js'
 
 document.addEventListener('DOMContentLoaded', async () => {
-    await loadVehicleImages()
     await loadPlanetsImages()
+    await loadVehicleImages()
     await loadStarshipsImages()
-    await SetUpCharacters()
-    await SetUpPlanets()
-    await SetUpVehicles()
-    await SetUpStarships()
 
     element('#panel-close').addEventListener('click', closePanel)
     element('#panel-bg').addEventListener('click', closePanel)

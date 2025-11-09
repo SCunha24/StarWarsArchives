@@ -1,4 +1,4 @@
-import { create, element, fetchJson, AKABAB_CHAR} from './utils.js'
+import { create, element, fetchJson, AKABAB_CHAR, scrollStep} from './utils.js'
 
 export const MakeCharacter = c => ({
     id: c.id,
@@ -102,3 +102,19 @@ export const closePanel = () => {
     panel.setAttribute('aria-hidden', 'true')
     element('#panel-body').innerHTML = ''
 }
+
+document.addEventListener('DOMContentLoaded', async () => {
+    await SetUpCharacters()
+
+    element('#panel-close').addEventListener('click', closePanel)
+    element('#panel-bg').addEventListener('click', closePanel)
+
+    element('#scrollUp').addEventListener('click', () => {
+        window.scrollBy({ top: -scrollStep, behavior: 'smooth' })
+    })
+
+    element('#scrollDown').addEventListener('click', () => {
+        window.scrollBy({ top: scrollStep, behavior: 'smooth' })
+    })
+})
+

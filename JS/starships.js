@@ -1,5 +1,5 @@
-import { create, element, fetchJson, SWAPI_BASE } from './utils.js'
-import { starshipsImages } from './data.js'
+import { create, element, fetchJson, SWAPI_BASE, scrollStep } from './utils.js'
+import { starshipsImages, loadStarshipsImages } from './data.js'
 
 export async function fetchAllStarships() {
     let starships = []
@@ -43,3 +43,16 @@ export async function SetUpStarships() {
         console.error(err)
     }
 }
+
+document.addEventListener('DOMContentLoaded', async () => {
+    await loadStarshipsImages()
+    await SetUpStarships()
+
+    element('#scrollUp').addEventListener('click', () => {
+        window.scrollBy({ top: -scrollStep, behavior: 'smooth' })
+    })
+    element('#scrollDown').addEventListener('click', () => {
+        window.scrollBy({ top: scrollStep, behavior: 'smooth' })
+    })
+})
+

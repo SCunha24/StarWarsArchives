@@ -1,5 +1,6 @@
-import { create, element, fetchJson, SWAPI_BASE} from './utils.js'
-import { vehicleImages } from './data.js'
+import { create, element, fetchJson, SWAPI_BASE, scrollStep} from './utils.js'
+import { vehicleImages, loadVehicleImages } from './data.js'
+
 
 export async function fetchAllVehicles() {
     let vehicles = []
@@ -44,3 +45,16 @@ export async function SetUpVehicles() {
         console.error(err)
     }
 }
+
+document.addEventListener('DOMContentLoaded', async () => {
+    await loadVehicleImages()
+    await SetUpVehicles()
+
+    element('#scrollUp').addEventListener('click', () => {
+        window.scrollBy({ top: -scrollStep, behavior: 'smooth' })
+    })
+    element('#scrollDown').addEventListener('click', () => {
+        window.scrollBy({ top: scrollStep, behavior: 'smooth' })
+    })
+})
+
