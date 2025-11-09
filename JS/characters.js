@@ -1,4 +1,4 @@
-import { create, element, fetchJson, AKABAB_CHAR, scrollStep} from './utils.js'
+import { create, element, fetchJson, AKABAB_CHAR, scrollStep, openPanelWith, closePanel} from './utils.js'
 
 export const MakeCharacter = c => ({
     id: c.id,
@@ -87,20 +87,6 @@ export async function SetUpCharacters() {
         grid.innerHTML = `<div class="placeholder">Failed to load characters: ${err.message}</div>`
         console.error(err)
     }
-}
-
-export const openPanelWith = (content) => {
-    const panel = element('#detail-panel')
-    const body = element('#panel-body')
-    body.innerHTML = ''
-    body.appendChild(content)
-    panel.setAttribute('aria-hidden', 'false')
-}
-
-export const closePanel = () => {
-    const panel = element('#detail-panel')
-    panel.setAttribute('aria-hidden', 'true')
-    element('#panel-body').innerHTML = ''
 }
 
 document.addEventListener('DOMContentLoaded', async () => {

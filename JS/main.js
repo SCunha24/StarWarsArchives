@@ -1,6 +1,6 @@
-import { scrollStep, element } from './utils.js'
+import { scrollStep, element, openPanelWith, closePanel } from './utils.js'
 import { loadVehicleImages, loadPlanetsImages, loadStarshipsImages } from './data.js'
-import { SetUpCharacters, openPanelWith, closePanel } from './characters.js'
+import { SetUpCharacters } from './characters.js'
 import { SetUpPlanets } from './planets.js'
 import { SetUpVehicles } from './vehicles.js'
 import { SetUpStarships } from './starships.js'

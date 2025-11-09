@@ -16,3 +16,17 @@ export const fetchJson = async (url) => {
     if (!response.ok) throw new Error(`${response.status}, ${response.statusText}`)
     return response.json()
 }
+
+export const openPanelWith = (content) => {
+    const panel = element('#detail-panel')
+    const body = element('#panel-body')
+    body.innerHTML = ''
+    body.appendChild(content)
+    panel.setAttribute('aria-hidden', 'false')
+}
+
+export const closePanel = () => {
+    const panel = element('#detail-panel')
+    panel.setAttribute('aria-hidden', 'true')
+    element('#panel-body').innerHTML = ''
+}
