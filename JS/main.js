@@ -50,3 +50,19 @@ let saved = localStorage.getItem('theme') || 'normal'
 sith.addEventListener('click', () => setTheme('sith'))
 jedi.addEventListener('click', () => setTheme('jedi'))
 normal.addEventListener('click', () => setTheme('normal'))
+
+
+const burger = element('.hamburger')
+const nav = element('.navlinks')
+
+burger.addEventListener('click', () => {
+  burger.classList.toggle('open')
+  nav.classList.toggle('open')
+})
+
+document.querySelectorAll('.navlinks a').forEach(a => {
+  a.addEventListener('click', () => {
+    burger.classList.remove('open')
+    nav.classList.remove('open')
+  })
+})

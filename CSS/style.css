@@ -12,6 +12,18 @@
     --navBG: rgba(0, 0, 0, 0.488)
 }
 
+::selection {
+  background: var(--detail);
+  color: black;
+  text-shadow: none;
+}
+
+::-moz-selection {
+  background: var(--detail);
+  color: black;
+  text-shadow: none;
+}
+
 @font-face {
     font-family: Font;
     src: url(../data/font.ttf);
@@ -350,11 +362,88 @@ html, body {
     background-color: var(--navBG);
     z-index: 10;
 }
-
 .navlinks {
-    display: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+  margin: 5vh 25vw;
+  position: fixed; 
+  inset: 0 auto auto 0;
+  z-index: 50;
+  transition: 0.3s ease-in-out;
 }
 
+.navlinks a { 
+  color: var(--grey); 
+  text-decoration: none; 
+  font-size: 1rem;
+  margin-left: 7vw; 
+}
+
+.navlinks a:hover { 
+  color: var(--detail); 
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  z-index: 1001;
+  position: fixed;
+  right: 20px;
+  top: 25px;
+}
+
+.hamburger span {
+  width: 30px;
+  height: 3px;
+  background: var(--detail);
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+@media (max-width: 900px) {
+
+  .hamburger {
+    display: flex;
+  }
+
+  .navlinks {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 40%;
+    height: 100vh;
+    background: var(--navBG);
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+    margin: 0;
+    transform: translateX(200%);
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s ease-in-out;
+  }
+
+  .navlinks.open {
+    transform: translateX(150%);
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .hamburger.open span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+  }
+  .hamburger.open span:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+  }
+}
+
+/*
 @media (min-width: 900px) {
     .navlinks {
         display: flex;
@@ -378,7 +467,7 @@ html, body {
         color: var(--detail); 
     }
 }
-
+*/
 @media (min-width: 1200px) {
      .navlinks a { 
         font-size: 1.2rem;
