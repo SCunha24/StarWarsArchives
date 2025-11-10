@@ -24,7 +24,7 @@ export const starshipInfo = (s) => {
     const name = create('h3')
     const meta = create('p')
     name.textContent = s.name
-    meta.innerHTML = `${s.starship_class || 'Class N/A'} • ${s.hyperdrive_rating ? 'HD: ' + s.hyperdrive_rating : ''}`
+    meta.innerHTML = `${s.starship_class || 'Class N/A'} - ${s.hyperdrive_rating ? 'HD: ' + s.hyperdrive_rating : ''}`
     card.appendChild(name)
     card.appendChild(meta)
     card.dataset.json = JSON.stringify(s)

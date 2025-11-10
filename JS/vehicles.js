@@ -26,7 +26,7 @@ export const vehicleInfo = (v) => {
     const name = create('h3')
     const meta = create('p')
     name.textContent = v.name
-    meta.innerHTML = `${v.model || 'Model N/A'} • ${v.manufacturer || ''}`
+    meta.innerHTML = `${v.model || 'Model N/A'} - ${v.manufacturer || ''}`
     card.appendChild(name)
     card.appendChild(meta)
     card.dataset.json = JSON.stringify(v)

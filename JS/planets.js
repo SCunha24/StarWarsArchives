@@ -24,7 +24,7 @@ export const planetInfo = (p) => {
     const name = create('h3')
     const meta = create('p')
     name.textContent = p.name
-    meta.innerHTML = `Climate: ${p.climate} • Population: ${p.population}`
+    meta.innerHTML = `Climate: ${p.climate} - Population: ${p.population}`
     card.appendChild(name)
     card.appendChild(meta)
     card.dataset.json = JSON.stringify(p)
