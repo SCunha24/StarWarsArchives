@@ -115,7 +115,7 @@ html, body {
 .title{
     position: relative; 
     text-align: center;
-    font-size: 5.5vw;
+    font-size: 5vw;
     left: 0;
     transition: all 0.2s ease-in-out;
     color: var(--bg); 
@@ -128,8 +128,8 @@ html, body {
 }
 
 .title p:nth-child(2){ 
-    margin: -3vw 0;
-    font-size: 8vw;
+    margin: -12.5% 0;
+    font-size: 7vw;
 }
 
 .title-container {
@@ -139,7 +139,7 @@ html, body {
     gap: 100px;
     width: 100%;
     height: 100%;
-    padding: 12vw; 
+    padding: 10%; 
     z-index: 200;
 }
 
@@ -148,7 +148,7 @@ html, body {
         flex-wrap: wrap;    
         justify-content: center;  
         gap: 2vh;  
-        padding: 10vw;                          
+        padding: 15rem;                          
     }
 
     .title {
@@ -156,7 +156,6 @@ html, body {
         text-align: center;         
     }
     .title p:nth-child(2){ 
-        margin: -8.5vh 0;
         font-size: 8rem;
     }
 }
@@ -172,7 +171,6 @@ html, body {
         font-size: 4.5rem;                     
     }
     .title p:nth-child(2){ 
-        margin: -6.5vh 0;
         font-size: 6.3rem;
     }
 }
@@ -182,14 +180,13 @@ html, body {
         font-size: 2.5rem;                     
     }
     .title p:nth-child(2){ 
-        margin: -3.5vh 0;
         font-size: 4rem;    
     }
 }
 
 .hero-img {
     width: 100%;                
-    max-width: 40vw; 
+    max-width: 35vw; 
     min-width: 500px; 
     height: auto;
     filter: drop-shadow(0 0 15px black);
@@ -239,14 +236,14 @@ html, body {
 }
 
 .mode svg {
-  width: 50px;   
-  height: 50px;
+  width: 2.5rem;   
+  height: 2.5rem;
   display: block;
 }
 
 .Sith-mode svg {
-  width: 90px;   
-  height: 90px;
+  width: 5rem;   
+  height: 5rem;
 }
 
 .mode:hover {
@@ -285,7 +282,7 @@ html, body {
 }
 
 #scrollUp {
-    bottom: 50vh;
+    bottom: 50%;
 }
 
 #scrollDown:hover {
@@ -293,7 +290,7 @@ html, body {
 }
 
 #scrollDown {
-    bottom: 43vh;
+    bottom: 41%;
 }
 
 @media (max-width: 1000px) {
@@ -304,8 +301,8 @@ html, body {
 
 .brand { 
     font-family: Font;
-    margin: -2vh 0;
-    font-size: 2rem;
+    margin: -9% 0;
+    font-size: 1.8rem;
     color: var(--bg); 
     text-shadow: -1px -1px 0 var(--detail), 1px -1px 0 var(--detail), 
     -1px 1px 0 var(--detail), 1px 1px 0 var(--detail);
@@ -317,8 +314,8 @@ html, body {
 }
 
 .brand p:nth-child(2){ 
-    margin: -6vh;
-    font-size: 3rem;
+    margin: -25%;
+    font-size: 2.5rem;
 }
 
 .brand:hover{ 
@@ -336,7 +333,7 @@ html, body {
         font-size: 2.3rem;
     }
     .brand p:nth-child(2){ 
-        margin: -5vh;
+        margin: -25%;
     }
 }  
 
@@ -349,7 +346,7 @@ html, body {
         font-size: 1.8rem;
     }
     .brand p:nth-child(2){ 
-        margin: -4vh;
+        margin: -25%;
     }
 } 
 
@@ -392,7 +389,7 @@ html, body {
   z-index: 1001;
   position: fixed;
   right: 20px;
-  top: 25px;
+  top: 6%;
 }
 
 .hamburger span {
@@ -468,11 +465,6 @@ html, body {
     }
 }
 */
-@media (min-width: 1200px) {
-     .navlinks a { 
-        font-size: 1.2rem;
-    }
-}
 
 .section { 
     padding: 72px 24px; 
