@@ -1,5 +1,4 @@
 export let vehicleImages = {}
-
 export async function loadVehicleImages() {
     try {
         const response = await fetch('./data/vehicles.json')
@@ -10,7 +9,6 @@ export async function loadVehicleImages() {
 }
 
 export let planetsImages = {}
-
 export async function loadPlanetsImages() {
     try {
         const response = await fetch('./data/planets.json')
@@ -21,7 +19,6 @@ export async function loadPlanetsImages() {
 }
 
 export let starshipsImages = {}
-
 export async function loadStarshipsImages() {
     try {
         const response = await fetch('./data/starships.json')

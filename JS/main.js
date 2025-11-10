@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     await loadPlanetsImages()
     await loadVehicleImages()
     await loadStarshipsImages()
-    applyTheme()
+    setTheme(saved)
 
     element('#panel-close').addEventListener('click', closePanel)
     element('#panel-bg').addEventListener('click', closePanel)
@@ -33,13 +33,19 @@ const themes = {
     jedi: '#2eff2e'    
 }
 
-let saved = localStorage.getItem('theme') || 'normal'
-document.documentElement.style.setProperty('--detail', themes[saved])
-
+const modes = [sith, jedi, normal]
 function setTheme(mode) {
-  document.documentElement.style.setProperty('--detail', themes[mode])
-  localStorage.setItem('theme', mode)
+
+    document.documentElement.style.setProperty('--detail', themes[mode])
+    localStorage.setItem('theme', mode)
+
+    modes.forEach(m => m.classList.remove('active'))
+    if (mode === 'sith') sith.classList.add('active')
+    else if (mode === 'jedi') jedi.classList.add('active')
+    else normal.classList.add('active')
 }
+
+let saved = localStorage.getItem('theme') || 'normal'
 
 sith.addEventListener('click', () => setTheme('sith'))
 jedi.addEventListener('click', () => setTheme('jedi'))

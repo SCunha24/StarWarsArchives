@@ -30,3 +30,27 @@ export const closePanel = () => {
     panel.setAttribute('aria-hidden', 'true')
     element('#panel-body').innerHTML = ''
 }
+
+export const panelContent = (title, image, fields = {}) => {
+    const left = create('div', 'panel-left')
+    const img = create('img')
+    img.src = image
+    img.alt = title
+    left.appendChild(img)
+
+    const right = create('div', 'panel-right')
+    const h = create('h2')
+    h.id = 'detail-title'
+    h.textContent = title
+    right.appendChild(h)
+    
+    Object.entries(fields).forEach(([key, value]) => {
+        const p = create('p')
+        p.innerHTML = `<strong>${key}:</strong> ${value ?? 'unknown'}`
+        right.appendChild(p)
+    })
+
+    const container = create('div', 'panel-inner')
+    container.append(left, right)
+    return container
+}

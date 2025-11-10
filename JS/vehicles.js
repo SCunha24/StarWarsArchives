@@ -1,4 +1,4 @@
-import { create, element, fetchJson, SWAPI_BASE, scrollStep} from './utils.js'
+import { create, element, fetchJson, SWAPI_BASE, scrollStep, openPanelWith, closePanel, panelContent} from './utils.js'
 import { vehicleImages, loadVehicleImages } from './data.js'
 
 
@@ -39,7 +39,22 @@ export async function SetUpVehicles() {
     try {
         const results = await fetchAllVehicles()
         grid.innerHTML = ''
-        results.forEach(v => grid.appendChild(vehicleInfo(v)))
+        results.forEach(v => {
+            const card = vehicleInfo(v)
+            card.addEventListener("click", () => {
+                openPanelWith(panelContent(
+                    v.name,
+                    vehicleImages[v.name],
+                    {
+                        Model: v.model,
+                        Manufacturer: v.manufacturer,
+                        Crew: v.crew,
+                        Passengers: v.passengers
+                    }
+                ))
+            })
+            grid.appendChild(card)
+        })
     } catch (err) {
         grid.innerHTML = `<div class="placeholder">Failed to load vehicles: ${err.message}</div>`
         console.error(err)

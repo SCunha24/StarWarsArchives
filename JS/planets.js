@@ -1,4 +1,4 @@
-import { create, element, scrollStep, fetchJson, SWAPI_BASE, openPanelWith, closePanel } from './utils.js'
+import { create, element, scrollStep, fetchJson, SWAPI_BASE, openPanelWith, closePanel, panelContent  } from './utils.js'
 import { planetsImages, loadPlanetsImages } from './data.js'
 
 export async function fetchAllPlanets() {
@@ -31,35 +31,6 @@ export const planetInfo = (p) => {
     return card
 }
 
-export const panelContentForPlanet = (p) => {
-    const left = create('div', 'panel-left')
-    const img = create('img')
-    img.src = planetsImages[p.name] || `https://placehold.co/600x800/102022/ffe81f?text=${encodeURIComponent(p.name)}`
-    img.alt = p.name
-    left.appendChild(img)
-
-    const right = create('div', 'panel-right')
-    const h = create('h2')
-    h.id = 'detail-title'
-    h.textContent = p.name
-
-    const climate = create('p')
-    const terrain = create('p')
-    const population = create('p')
-    const gravity = create('p')
-
-    climate.innerHTML = `<strong>Climate:</strong> ${p.climate}`
-    terrain.innerHTML = `<strong>Terrain:</strong> ${p.terrain}`
-    population.innerHTML = `<strong>Population:</strong> ${p.population}`
-    gravity.innerHTML = `<strong>Gravity:</strong> ${p.gravity}`
-
-    right.append(h, climate, terrain, population, gravity)
-
-    const container = create('div', 'panel-inner')
-    container.append(left, right)
-    return container
-}
-
 export async function SetUpPlanets() {
     const grid = element('#planets-grid')
     grid.innerHTML = `<div class="placeholder">Loading planets…</div>`
@@ -69,7 +40,16 @@ export async function SetUpPlanets() {
         results.forEach(p => {
             const card = planetInfo(p)
             card.addEventListener("click", () => {
-                openPanelWith(panelContentForPlanet(p))
+                openPanelWith(panelContent(
+                    p.name,
+                    planetsImages[p.name] || `https://placehold.co/600x800/102022/ffe81f?text=${p.name}`,
+                    {
+                        Climate: p.climate,
+                        Terrain: p.terrain,
+                        Population: p.population,
+                        Gravity: p.gravity
+                    }
+                ))
             })
             grid.appendChild(card)
         })

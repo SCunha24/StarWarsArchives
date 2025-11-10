@@ -1,4 +1,4 @@
-import { create, element, fetchJson, SWAPI_BASE, scrollStep } from './utils.js'
+import { create, element, fetchJson, SWAPI_BASE, scrollStep, openPanelWith, closePanel, panelContent } from './utils.js'
 import { starshipsImages, loadStarshipsImages } from './data.js'
 
 export async function fetchAllStarships() {
@@ -37,7 +37,22 @@ export async function SetUpStarships() {
     try {
         const results = await fetchAllStarships()
         grid.innerHTML = ''
-        results.forEach(s => grid.appendChild(starshipInfo(s)))
+        results.forEach(s => {
+            const card = starshipInfo(s)
+            card.addEventListener("click", () => {
+                openPanelWith(panelContent(
+                s.name,
+                starshipsImages[s.name], 
+                {
+                    Model: s.model,
+                    Manufacturer: s.manufacturer,
+                    Hyperdrive: s.hyperdrive_rating,
+                    Crew: s.crew,
+                    Passengers: s.passengers
+                }))
+            })
+            grid.appendChild(card)
+        })
     } catch (err) {
         grid.innerHTML = `<div class="placeholder">Failed to load starships: ${err.message}</div>`
         console.error(err)
