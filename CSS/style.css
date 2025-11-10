@@ -419,7 +419,7 @@ html, body {
 }
 
 .navlinks a:hover { 
-    
+    color: var(--white);
 }
 
 .hamburger {
@@ -444,7 +444,7 @@ html, body {
 @media (max-width: 900px) {
 
   .hamburger {
-    
+    display: flex;
   }
 
   .navlinks {
@@ -672,6 +672,7 @@ html, body {
     margin: 0 auto; 
     text-align: center;   
     font-size: 1rem;
+    padding: 5vh;
     color: var(--grey);
     line-height: 1;
 }
