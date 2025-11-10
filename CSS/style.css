@@ -401,50 +401,50 @@ html, body {
 }
 
 .navlinks {
-  display: flex;
-  justify-content: space-between;
-  align-items: center; 
-  margin: 5vh 25vw;
-  position: fixed; 
-  inset: 0 auto auto 0;
-  z-index: 50;
-  transition: 0.3s ease-in-out;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    margin: 5vh 25vw;
+    position: fixed; 
+    inset: 0 auto auto 0;
+    z-index: 50;
+    transition: 0.3s ease-in-out;
 }
 
 .navlinks a { 
-  color: var(--grey); 
-  text-decoration: none; 
-  font-size: 1rem;
-  margin-left: 7vw; 
+    color: var(--grey); 
+    text-decoration: none; 
+    font-size: 1rem;
+    margin-left: 7vw; 
 }
 
 .navlinks a:hover { 
-  color: var(--detail); 
+    
 }
 
 .hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  cursor: pointer;
-  z-index: 1001;
-  position: fixed;
-  right: 20px;
-  top: 6%;
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    z-index: 1001;
+    position: fixed;
+    right: 20px;
+    top: 6%;
 }
 
 .hamburger span {
-  width: 30px;
-  height: 3px;
-  background: var(--detail);
-  border-radius: 2px;
-  transition: 0.3s;
+    width: 30px;
+    height: 3px;
+    background: var(--detail);
+    border-radius: 2px;
+    transition: 0.3s;
 }
 
 @media (max-width: 900px) {
 
   .hamburger {
-    display: flex;
+    
   }
 
   .navlinks {
@@ -485,32 +485,6 @@ html, body {
     font-size: 0.8rem;
     }
 }
-
-/*
-@media (min-width: 900px) {
-    .navlinks {
-        display: flex;
-        justify-content: space-between;
-        align-items: center; 
-        margin: 5vh 25vw;
-        position: fixed; 
-        inset: 0 auto auto 0;
-        z-index: 50;
-        transition: all 0.2s ease-in-out;
-    }
-
-    .navlinks a { 
-        color: var(--grey); 
-        text-decoration: none; 
-        font-size: 1rem;
-        margin-left: 7vw; 
-    }
-
-    .navlinks a:hover { 
-        color: var(--detail); 
-    }
-}
-*/
 
 .section { 
     padding: 150px 24px; 
@@ -693,5 +667,18 @@ html, body {
 }
 
 .HomeText{
-    height: 300vh;
+    max-width: 700px;
+    height: 50vh;
+    margin: 0 auto; 
+    text-align: center;   
+    font-size: 1rem;
+    color: var(--grey);
+    line-height: 1;
+}
+
+.HomeText h2{ 
+    font-size: 2rem;
+    color: var(--bg); 
+    text-shadow: -1px -1px 0 var(--detail), 1px -1px 0 var(--detail), 
+    -1px 1px 0 var(--detail), 1px 1px 0 var(--detail);
 }
