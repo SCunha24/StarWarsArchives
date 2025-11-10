@@ -26,12 +26,12 @@
 
 @font-face {
     font-family: Font;
-    src: url(data/font.ttf);
+    src: url(../data/font.ttf);
 }
 
 @font-face {
     font-family: FontOutline;
-    src: url(data/fontOutline.ttf);
+    src: url(../data/fontOutline.ttf);
     }
 
 * { 
