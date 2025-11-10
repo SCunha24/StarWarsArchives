@@ -106,12 +106,6 @@ html, body {
     transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-.intro.fade-out {
-    opacity: 0;
-    transform: translateY(-10vh); 
-    pointer-events: none;
-}
-
 .title{
     position: relative; 
     text-align: center;
@@ -124,7 +118,7 @@ html, body {
 }
 
 .title p{
-    margin: -5vw 0;
+    margin: -8vh 0;
 }
 
 .title p:nth-child(2){ 
@@ -136,7 +130,7 @@ html, body {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    gap: 100px;
+    gap: 2vw;
     width: 100%;
     height: 100%;
     padding: 10%; 
@@ -147,7 +141,7 @@ html, body {
     .title-container {  
         flex-wrap: wrap;    
         justify-content: center;  
-        gap: 2vh;  
+        gap: 2vw;  
         padding: 15rem;                          
     }
 
@@ -176,13 +170,17 @@ html, body {
 }
 
 @media (max-width: 565px) {
+    .title-container {
+        height: 50%;
+    }    
     .title { 
-        font-size: 2.5rem;                     
+        font-size: 10vw;                     
     }
     .title p:nth-child(2){ 
-        font-size: 4rem;    
+        font-size: 15vw;    
     }
 }
+
 
 .hero-img {
     width: 100%;                
@@ -194,18 +192,21 @@ html, body {
 
 
 @media (max-width: 600px) {
+    .title { 
+        padding: 0 0 0 0;        
+    }
     .hero-img {
-        min-width: 400px; 
+        min-width: 300px; 
     }
 }
 
 .topnav {
+    position: fixed;
     display: flex;
     justify-content: space-between;
     align-items: center; 
     margin: 0 5vw;
     position: fixed; 
-    inset: 0 auto auto 0;
     z-index: 50;
 }
 
@@ -439,6 +440,11 @@ html, body {
     transform: rotate(-45deg) translate(6px, -6px);
   }
 }
+@media (max-width: 600px) {
+    .navlinks a { 
+    font-size: 0.5rem;
+    }
+}
 
 /*
 @media (min-width: 900px) {
@@ -507,7 +513,8 @@ html, body {
     .grid { 
         padding: 0 10vw 0 10vw;
     }
-}  
+} 
+
 .card {
     background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
     border-radius: var(--card-radius);
