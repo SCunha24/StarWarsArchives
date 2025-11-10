@@ -265,8 +265,8 @@ html, body {
     .modes {
         position: fixed;
         top: 0;
-        height: 30vh;
-        margin: 5vh 5vw;
+        height: 5vh;
+        margin: 14vh 5vw;
         gap: 5px;
         display: flex;
         flex-direction: flex-start; 
