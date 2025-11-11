@@ -3,7 +3,7 @@ import { create, element, fetchJson, AKABAB_CHAR, scrollStep, openPanelWith, clo
 export const MakeCharacter = c => ({
     id: c.id,
     name: c.name,
-    image: c.image,
+    image: c.image || `./data/placeholder.png`,
     species: c.species || 'unknown',
     homeworld: c.homeworld || 'unknown',
     affiliation: Array.isArray(c.affiliation) ? c.affiliation.join(', ') : (c.affiliation || ''),
@@ -16,7 +16,7 @@ export const CharacterCard = (c) => {
     imgWrap.style.position = 'relative'
 
     const img = create('img')
-    img.src = c.image || ''
+    img.src = c.image || './data/placeholder.png'
     img.alt = c.name
     img.loading = 'lazy'
     imgWrap.appendChild(img)
@@ -64,16 +64,5 @@ export async function SetUpCharacters() {
 
 document.addEventListener('DOMContentLoaded', async () => {
     await SetUpCharacters()
-
-    element('#panel-close').addEventListener('click', closePanel)
-    element('#panel-bg').addEventListener('click', closePanel)
-
-    element('#scrollUp').addEventListener('click', () => {
-        window.scrollBy({ top: -scrollStep, behavior: 'smooth' })
-    })
-
-    element('#scrollDown').addEventListener('click', () => {
-        window.scrollBy({ top: scrollStep, behavior: 'smooth' })
-    })
 })
 

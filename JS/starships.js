@@ -16,7 +16,7 @@ export const starshipInfo = (s) => {
     const card = create('article', 'card')
     const imgWrap = create('div', 'img-wrap')
     const img = create('img')
-    img.src = starshipsImages[s.name] || `https://placehold.co/600x800/102022/ffe81f?text=${encodeURIComponent(s.name)}`
+    img.src = starshipsImages[s.name] || `./data/placeholder.png`
     img.alt = s.name
     imgWrap.appendChild(img)
     card.appendChild(imgWrap)
@@ -62,12 +62,5 @@ export async function SetUpStarships() {
 document.addEventListener('DOMContentLoaded', async () => {
     await loadStarshipsImages()
     await SetUpStarships()
-
-    element('#scrollUp').addEventListener('click', () => {
-        window.scrollBy({ top: -scrollStep, behavior: 'smooth' })
-    })
-    element('#scrollDown').addEventListener('click', () => {
-        window.scrollBy({ top: scrollStep, behavior: 'smooth' })
-    })
 })
 

@@ -16,7 +16,7 @@ export const planetInfo = (p) => {
     const card = create('article', 'card')
     const imgWrap = create('div', 'img-wrap')
     const img = create('img')
-    img.src = planetsImages[p.name] || `https://placehold.co/600x800/102022/ffe81f?text=${encodeURIComponent(p.name)}`
+    img.src = planetsImages[p.name] || `./data/placeholder.png`
     img.alt = p.name
     imgWrap.appendChild(img)
     card.appendChild(imgWrap)
@@ -62,14 +62,4 @@ export async function SetUpPlanets() {
 document.addEventListener('DOMContentLoaded', async () => {
     await loadPlanetsImages()
     await SetUpPlanets()
-
-    element('#panel-close').addEventListener('click', closePanel)
-    element('#panel-bg').addEventListener('click', closePanel)
-
-    element('#scrollUp').addEventListener('click', () => {
-        window.scrollBy({ top: -scrollStep, behavior: 'smooth' })
-    })
-    element('#scrollDown').addEventListener('click', () => {
-        window.scrollBy({ top: scrollStep, behavior: 'smooth' })
-    })
 })

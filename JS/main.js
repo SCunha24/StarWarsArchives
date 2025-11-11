@@ -1,9 +1,5 @@
 import { scrollStep, element, openPanelWith, closePanel } from './utils.js'
 import { loadVehicleImages, loadPlanetsImages, loadStarshipsImages } from './data.js'
-import { SetUpCharacters } from './characters.js'
-import { SetUpPlanets } from './planets.js'
-import { SetUpVehicles } from './vehicles.js'
-import { SetUpStarships } from './starships.js'
 
 document.addEventListener('DOMContentLoaded', async () => {
     await loadPlanetsImages()
@@ -11,16 +7,27 @@ document.addEventListener('DOMContentLoaded', async () => {
     await loadStarshipsImages()
     setTheme(saved)
 
-    element('#panel-close').addEventListener('click', closePanel)
-    element('#panel-bg').addEventListener('click', closePanel)
+    const panelClose = element('#panel-close')
+    const panelBg = element('#panel-bg')
 
-    element('#scrollUp').addEventListener('click', () => {
+    if (panelClose) panelClose.addEventListener('click', closePanel)
+    if (panelBg) panelBg.addEventListener('click', closePanel)
+
+    const btnUp = element('#scrollUp')
+    const btnDown = element('#scrollDown')
+
+    if (btnUp) {
+      btnUp.addEventListener('click', () => {
         window.scrollBy({ top: -scrollStep, behavior: 'smooth' })
-    })
+      })
+    }
 
-    element('#scrollDown').addEventListener('click', () => {
+    if (btnDown) {
+      btnDown.addEventListener('click', () => {
         window.scrollBy({ top: scrollStep, behavior: 'smooth' })
-    })
+        console.log("baixa")
+      })
+    }
 })
 
 const sith = element('.Sith-mode')

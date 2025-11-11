@@ -1,7 +1,6 @@
 import { create, element, fetchJson, SWAPI_BASE, scrollStep, openPanelWith, closePanel, panelContent} from './utils.js'
 import { vehicleImages, loadVehicleImages } from './data.js'
 
-
 export async function fetchAllVehicles() {
     let vehicles = []
     let url = SWAPI_BASE + 'vehicles/'
@@ -17,7 +16,7 @@ export const vehicleInfo = (v) => {
     const card = create('article', 'card')
     const imgWrap = create('div', 'img-wrap')
     const img = create('img')
-    img.src = vehicleImages[v.name] || `https://placehold.co/600x800/102022/ffe81f?text=${encodeURIComponent(v.name)}`
+    img.src = vehicleImages[v.name] || `./data/placeholder.png`
     img.alt = v.name
     img.loading = 'lazy'
     imgWrap.appendChild(img)
@@ -64,12 +63,5 @@ export async function SetUpVehicles() {
 document.addEventListener('DOMContentLoaded', async () => {
     await loadVehicleImages()
     await SetUpVehicles()
-
-    element('#scrollUp').addEventListener('click', () => {
-        window.scrollBy({ top: -scrollStep, behavior: 'smooth' })
-    })
-    element('#scrollDown').addEventListener('click', () => {
-        window.scrollBy({ top: scrollStep, behavior: 'smooth' })
-    })
 })
 
