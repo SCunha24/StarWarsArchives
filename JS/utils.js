@@ -7,7 +7,6 @@ export const create = (tag, className) => {
 }
 
 export const element = (select) => document.querySelector(select)
-
 export const AKABAB_CHAR = 'https://akabab.github.io/starwars-api/api/all.json'
 export const SWAPI_BASE = 'https://swapi.dev/api/'
 
